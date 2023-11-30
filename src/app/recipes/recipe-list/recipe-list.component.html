@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-xs-12">
+            <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="showNewRecipeForm">
+    <div class="col-xs-12">
+      <form>
+        <div class="form-group">
+          <label for="recipeName">Recipe Name:</label>
+          <input type="text" id="recipeName" class="form-control" [(ngModel)]="newRecipeName" name="recipeName" required>
+        </div>
+        <div class="form-group">
+          <label for="recipeDescription">Recipe Description:</label>
+          <textarea id="recipeDescription" class="form-control" [(ngModel)]="newRecipeDescription" name="recipeDescription" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="recipeImage">Image URL:</label>
+          <textarea id="recipeImage" class="form-control" [(ngModel)]="newImageURL" name="recipeImage" required></textarea>
+        </div>
+        <!-- <div class="form-group">
+          <label for="recipeIngredients">How many ingredients do you need?</label>
+          <input type="text" id="recipeIngredients" class="form-control" [(ngModel)]="ingredientNum" required>
+        </div> -->
+        <!-- <div class="form-group">
+          <label for="recipeIngredients">Recipe Ingredients (comma-separated):</label>
+          <input type="text" id="recipeIngredients" class="form-control" [(ngModel)]="newRecipeIngredients" required>
+        </div> -->
+        <label for="ingredient">Ingredient:</label><br>
+        <input type="text" id="ingredient" [(ngModel)]="newIngredientName" name="ingredient">
+        <br>
+          <label for="amount">Amount:</label>
+          <input 
+            name="amount"
+            ngModel
+            required
+            min="1"
+            [pattern]="'^[1-9]+[0-9]*$'"
+            type="number" 
+            id="amount" 
+            class="form-control"
+            #amountInput>
+        <br>
+      </form>
+      
+      <button (click)="onNewIngredient()">Add Ingredient</button>
+      <br><br>
+      <button (click)="onSubmitNewRecipe()" type="submit" class="btn btn-primary">Add Recipe</button>
+  
+      <div *ngIf="showIngredientsForm">
+        <!-- Display ingredients here -->
+        <ul>
+          <li *ngFor="let ingredient of ingredients">
+            {{ ingredient.name }} - {{ ingredient.amount }}
+          </li>
+        </ul>
+      </div>
+
+      
+      
+    </div>
+  </div>
+  
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-recipe-item 
+        *ngFor="let recipeEl of recipes; let i = index"
+        [recipe]="recipeEl"
+        (recipeSelected)="onRecipeSelected(recipeEl)"
+        [recipeId]="i"></app-recipe-item>
+    </div>
+  </div>
