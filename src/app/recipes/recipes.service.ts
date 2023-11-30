@@ -8,11 +8,11 @@ export class RecipesService {
   recipeChanged = new EventEmitter<Recipe[]>()
   recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
-    new Recipe('Recipe 1', 'Testing with this first recipe', 'https://img.taste.com.au/VGK3b1i8/taste/2017/05/the-perfect-churros1980x1320-127049-1.jpg', [
+    new Recipe('Example Recipe 1', 'This is the first example recipe', 'https://img.taste.com.au/VGK3b1i8/taste/2017/05/the-perfect-churros1980x1320-127049-1.jpg', [
         new Ingredient('meat', 1),
         new Ingredient('fries', 20)
       ]),
-    new Recipe ('Recipe 2', 'another test','https://img.taste.com.au/VGK3b1i8/taste/2017/05/the-perfect-churros1980x1320-127049-1.jpg',[
+    new Recipe ('Example Recipe 2', 'Another example. Click on New Recipe to add your own.','https://img.taste.com.au/VGK3b1i8/taste/2017/05/the-perfect-churros1980x1320-127049-1.jpg',[
         new Ingredient('buns', 1),
         new Ingredient('meat', 1)
   
